@@ -1,35 +1,73 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from 'react';
+import Header from './components/Header';
+import MealList from './components/MealList';
+import MealDetails from './components/MealDetails';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [meals, setMeals] = useState([]); // Arama sonuçlarını burada tutacağız
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedMeal, setSelectedMeal] = useState(null); // Seçilen yemeği burada tutacağız
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Dark Mode toggle
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+    document.body.classList.toggle('dark-mode', !isDarkMode);
+  };
+
+  // Harf veya kelime ile yemek arama
+  const searchMeals = (query) => {
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setMeals(data.meals || []); // Eğer sonuç yoksa boş array döner
+      });
+  };
+
+  // Header'dan gelen arama sorgusunu yönetme
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    searchMeals(query); // API çağrısı yaparak sonuçları güncelliyoruz
+  };
+
+  // Belirli bir kategoriden yemek çekme
+  const fetchCategoryMeals = (category) => {
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
+      .then((response) => response.json())
+      .then((data) => setMeals(data.meals || []));
+  };
+
+  // Rastgele bir yemek çekme
+  const fetchRandomMeal = () => {
+    fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+      .then((response) => response.json())
+      .then((data) => setSelectedMeal(data.meals[0]));
+  };
+
+  // İlk başta "a" harfiyle başlayan yemekleri getirme
+  useEffect(() => {
+    searchMeals('a'); // İlk açılışta "a" harfiyle başlayan yemekler listelenir
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className={`app ${isDarkMode ? 'dark' : 'light'}`}>
+      <Header
+        searchQuery={searchQuery}
+        onSearch={handleSearch} // Arama fonksiyonunu Header'a geçiriyoruz
+        toggleDarkMode={toggleDarkMode}
+        isDarkMode={isDarkMode}
+        onSelectCategory={fetchCategoryMeals} // Kategori seçildiğinde çağrılır
+        onRandomMeal={fetchRandomMeal} // Rastgele bir yemek seçildiğinde çağrılır
+      />
+      {/* Eğer bir yemek seçildiyse, detaylarını göster */}
+      {selectedMeal ? (
+        <MealDetails meal={selectedMeal} />
+      ) : (
+        <MealList meals={meals} onSelectMeal={setSelectedMeal} /> // Yemeği seçip meal detail'e gönder
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;
