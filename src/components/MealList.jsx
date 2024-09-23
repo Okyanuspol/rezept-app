@@ -11,7 +11,7 @@ const MealList = ({ meals, onSelectMeal }) => {
         <div key={meal.idMeal} className="meal-card">
           <img src={meal.strMealThumb} alt={meal.strMeal} />
           <h3>{meal.strMeal}</h3>
-          {/* onSelectMeal fonksiyonu tıklanıldığında ilgili yemeği geçer */}
+          
           <button onClick={() => onSelectMeal(meal)}>Details</button>
         </div>
       ))}

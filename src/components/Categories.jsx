@@ -24,7 +24,7 @@ const Categories = ({ onSelectCategory }) => {
           {categories.map((category) => (
             <li key={category.idCategory} onClick={() => {
               onSelectCategory(category.strCategory);
-              setIsOpen(false); // Kategori seçildiğinde menüyü kapat
+              setIsOpen(false); 
             }}>
               {category.strCategory}
             </li>

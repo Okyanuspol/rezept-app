@@ -1,4 +1,4 @@
-/* Genel stil */
+
 body.light-mode {
     background-color: #f0f0f0;
     color: #333;
@@ -9,7 +9,7 @@ body.light-mode {
     color: #ffffff;
   }
   
-  /* Arka plan ve text rengi dark mode için ayarlamalar */
+
   .app.light {
     background-color: #f8f9fa;
     color: #333;
@@ -20,7 +20,7 @@ body.light-mode {
     color: #ffffff;
   }
   
-  /* Diğer componentlerde Dark Mode */
+
   .header {
     display: flex;
     justify-content: space-between;
@@ -56,7 +56,7 @@ body.light-mode {
   }
   
   .meal-details img {
-    width: 300px; /* Görüntü boyutunu küçülttük */
+    width: 300px;
     height: auto;
     object-fit: cover;
   }
@@ -72,7 +72,7 @@ body.light-mode {
     color: white;
   }
   
-  /* Kategoriler dropdown */
+
   .categories-dropdown {
     position: relative;
   }
@@ -87,7 +87,7 @@ body.light-mode {
   }
   
   .dropdown-menu {
-    display: none; /* Menü başlangıçta gizli */
+    display: none; 
     position: absolute;
     background-color: white;
     border: 1px solid #ccc;
@@ -98,7 +98,7 @@ body.light-mode {
   }
   
   .categories-dropdown.open .dropdown-menu {
-    display: block; /* Açıldığında göster */
+    display: block;
   }
   
   .dropdown-menu li {
@@ -227,14 +227,14 @@ body.light-mode {
   }
   
   .dropdown-menu {
-    display: none; /* Varsayılan olarak gizli */
+    display: none; 
     position: absolute;
     background-color: white;
     border: 1px solid #ccc;
-    z-index: 1000; /* Üstte görünmesi için */
+    z-index: 1000; 
   }
   
   .categories-dropdown .dropdown-menu.open {
-    display: block; /* Açıldığında göster */
+    display: block;
   }
   

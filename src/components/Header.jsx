@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Header = ({ searchQuery, onSearch, toggleDarkMode, isDarkMode, onSelectCategory, onRandomMeal }) => {
-  // Arama kutusunda her değişiklik olduğunda tetiklenir
+  
   const handleSearchInputChange = (e) => {
     const query = e.target.value;
-    onSearch(query); // Arama sorgusunu yukarıdaki App bileşenine gönderiyoruz
+    onSearch(query); 
   };
 
   return (
@@ -25,7 +25,7 @@ const Header = ({ searchQuery, onSearch, toggleDarkMode, isDarkMode, onSelectCat
         <input
           type="text"
           value={searchQuery}
-          onChange={handleSearchInputChange} // Arama input'u her değiştiğinde çağrılır
+          onChange={handleSearchInputChange} 
           placeholder="Search for a meal..."
           className="search-input"
         />
