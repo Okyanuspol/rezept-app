@@ -1,23 +1,24 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-const Header = ({ searchQuery, onSearch, toggleDarkMode, isDarkMode, onSelectCategory, onRandomMeal }) => {
+const Header = ({ searchQuery, onSearch, toggleDarkMode, isDarkMode, onHomeClick,  }) => {
   
   const handleSearchInputChange = (e) => {
     const query = e.target.value;
     onSearch(query); 
   };
 
+  const handleHomeClick = (event) => {
+    event.preventDefault();
+    onHomeClick();
+  };
+
   return (
     <header className={`header ${isDarkMode ? 'dark' : 'light'}`}>
       <div className="left">
         <nav>
-          <a href="#">Home</a>
-          <a href="#about-us">About Us</a>
-          <div className="categories">
-            <button className="dropdown-button" onClick={onSelectCategory}>
-              Categories
-            </button>
-          </div>
+        <NavLink to="/" >Home</NavLink> 
+          <NavLink to="/about">About Us</NavLink>
         </nav>
       </div>
 
@@ -32,10 +33,6 @@ const Header = ({ searchQuery, onSearch, toggleDarkMode, isDarkMode, onSelectCat
       </div>
 
       <div className="right">
-        <button className="random-button" onClick={onRandomMeal}>
-          Random Meal
-        </button>
-
         <label className="switch">
           <input type="checkbox" onChange={toggleDarkMode} checked={isDarkMode} />
           <span className="slider round">Dark Mode</span>
