@@ -1,8 +1,8 @@
-# React + Vite
+## Praktische und leckere Rezepte
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Der Zweck dieser App ist es, Menschen köstliche Rezepte zu bieten. Es umfasst alle Arten von Gemüse- und Fleischgerichten. auch Desserts und Suppen. Sie können ganz einfach nach Lebensmitteln suchen oder neue Gerichte ausprobieren. Wenn Sie auf die Details klicken, können Sie die Zutaten und die Zubereitung der Gerichte sehen. Wenn Sie sich nicht entscheiden können, hilft Ihnen ein Zufallsrezept, indem Sie auf die Schaltfläche „Zufällige Mahlzeit“ klicken. Sie können den untenstehenden Link verwenden, um auf die Seite zuzugreifen.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+### [Try it now] (https://okyanuspol.github.io/rezept-app/)
+
